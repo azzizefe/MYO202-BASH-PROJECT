@@ -1,0 +1,7 @@
+ Aziz Efe Çırak
+ 2420191044
+ Sertifika Bağlantıları;
+ 1: [Sertifika_Linkini_Buraya_Gir]
+ 2: [Sertifika_Linkini_Buraya_Gir] 
+ 3: [https://credsverse.com/credentials/3f0a330b-6466-4bdf-a1cd-b8bb776fe372]
+
