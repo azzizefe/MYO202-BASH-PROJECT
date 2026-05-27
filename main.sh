@@ -1,42 +1,43 @@
 #!/bin/bash
 # Aziz Efe Çırak - 2420191044
 # Sertifika Bağlantıları (3 Adet bağlantı)
+# 
 
 echo -n "Lütfen parolayı giriniz: "
-read -s PAROLA
+read  PAROLA
 echo
 
 if [ "$PAROLA" != "MYO+202" ]; then
-    echo "Hatalı parola! Script durduruldu."
+    echo "Hatalı şifre"
     exit 1
 fi
 
-echo "Parola doğru, işleme devam ediliyor..."
+echo "doğru"
 
 TIMESTAMP=$(date -Iseconds)
-echo "Script Çalışma Zamanı: $TIMESTAMP" > report.log
+echo "Çalışma Zamanı: $TIMESTAMP" > report.log
 
-echo "--- İşlemci ---" >> report.log
+echo "işlemci" >> report.log
 wmic.exe cpu get name >> report.log 2>&1
 
-echo "--- RAM ---" >> report.log
+echo "ram" >> report.log
 wmic.exe computersystem get totalphysicalmemory >> report.log 2>&1
 
-echo "--- Anakart ---" >> report.log
+echo "anakart" >> report.log
 wmic.exe baseboard get product,Manufacturer >> report.log 2>&1
 
-echo "--- Disk UUID ---" >> report.log
+echo "disk" >> report.log
 wmic.exe diskdrive get serialnumber >> report.log 2>&1
 
-echo "--- MAC Adresi ---" >> report.log
+echo "mac adress" >> report.log
 getmac.exe >> report.log 2>&1
 
-echo "Donanım raporu (report.log) oluşturuldu."
+echo " rapor oluştu"
 
 echo "Dosya şifreleniyor..."
 gpg --symmetric --batch --yes --cipher-algo AES256 --passphrase "$PAROLA" report.log
 
 rm report.log
 
-echo "İşlem başarıyla tamamlandı!"
-echo "report.log.gpg dosyası oluşturuldu ve orijinal dosya silindi."
+echo "tamamlandı"
+echo "dosyası oluşturuldu ve orijinal dosya silindi."
