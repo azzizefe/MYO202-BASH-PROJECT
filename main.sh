@@ -2,7 +2,6 @@
 # Efe Çırak - 2420191044
 # BASH Ödevi Ana Script (main.sh)
 
-# 1. Kullanıcıdan parola isteme
 echo -n "Lütfen parolayı giriniz: "
 read -s PAROLA
 echo
@@ -14,10 +13,8 @@ fi
 
 echo "Parola doğru, işleme devam ediliyor..."
 
-# 2. Donanım Raporu Oluşturma
 TIMESTAMP=$(date -Iseconds)
 echo "Script Çalışma Zamanı: $TIMESTAMP" > report.log
-
 
 echo "--- İşlemci ---" >> report.log
 wmic.exe cpu get name >> report.log 2>&1
@@ -36,11 +33,9 @@ getmac.exe >> report.log 2>&1
 
 echo "Donanım raporu (report.log) oluşturuldu."
 
-# 3. GPG ile Şifreleme
 echo "Dosya şifreleniyor..."
 gpg --symmetric --batch --yes --cipher-algo AES256 --passphrase "$PAROLA" report.log
 
-# 4. Orijinal dosyayı silme
 rm report.log
 
 echo "İşlem başarıyla tamamlandı!"
