@@ -42,4 +42,4 @@ gpg --symmetric --batch --yes --cipher-algo AES256 --passphrase "$PAROLA" report
 rm report.log
 
 echo "tamamlandı"
-echo "dosyası oluşturuldu ve orijinal dosya silindi."
+echo "dosyası oluştu ve orijinal dosya silindi."
