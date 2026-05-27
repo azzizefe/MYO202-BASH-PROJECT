@@ -1,6 +1,6 @@
 #!/bin/bash
-# Efe Çırak - 2420191044
-# BASH Ödevi Ana Script (main.sh)
+# Aziz Efe Çırak - 2420191044
+# Sertifika Bağlantıları (3 Adet bağlantı)
 
 echo -n "Lütfen parolayı giriniz: "
 read -s PAROLA
