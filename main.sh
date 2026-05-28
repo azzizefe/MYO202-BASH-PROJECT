@@ -38,3 +38,13 @@ TIMESTAMP=$(date -Iseconds)
     getmac.exe >> $DOSYA
 
 
+
+echo " rapor oluştu"
+
+echo "Dosya şifreleniyor "
+gpg --symmetric --batch --yes --cipher-algo AES256 --passphrase "$PAROLA" $DOSYA
+
+rm $DOSYA
+
+echo "tamamlandı "
+echo "dosyası oluştu ve orijinal silindi"
