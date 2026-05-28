@@ -17,3 +17,24 @@ else
     echo "Hatalı"
 fi
 
+TIMESTAMP=$(date -Iseconds)
+
+
+    echo "Çalışma Zamanı: $TIMESTAMP"
+    
+    echo "işlemci"
+    wmic.exe cpu get name >> $DOSYA
+    
+    echo "ram"
+    wmic.exe computersystem get totalphysicalmemory >> $DOSYA
+    
+    echo "anakart"
+    wmic.exe baseboard get product,Manufacturer >> $DOSYA
+    
+    echo "disk"
+    wmic.exe diskdrive get serialnumber >> $DOSYA
+    
+    echo " mac adress"
+    getmac.exe >> $DOSYA
+
+
