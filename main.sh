@@ -20,7 +20,7 @@ fi
 TIMESTAMP=$(date -Iseconds)
 
 
-    echo "Çalışma Zamanı: $TIMESTAMP"
+    echo "saat: $TIMESTAMP"
     
     echo "işlemci"
     wmic.exe cpu get name >> $DOSYA
