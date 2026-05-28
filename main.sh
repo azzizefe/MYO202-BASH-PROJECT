@@ -5,41 +5,15 @@
 # https://www.btkakademi.gov.tr/portal/certificate/validate?certificateId=XV1hWG2yKM
 # https://credsverse.com/credentials/3f0a330b-6466-4bdf-a1cd-b8bb776fe372
 
-echo -n "Lütfen parolayı giriniz: "
-read  PAROLA
+DOSYA="report.log"
+
+echo -n "parolayı giriniz: "
+read PAROLA
 echo
 
-if [ "$PAROLA" != "MYO+202" ]; then
-    echo "Hatalı şifre"
-    exit 1
+if [ "$PAROLA" == "MYO+202" ]; then
+    echo "doğru"
+else
+    echo "Hatalı"
 fi
 
-echo "doğru"
-
-TIMESTAMP=$(date -Iseconds)
-echo "Çalışma Zamanı: $TIMESTAMP" > report.log
-
-echo "işlemci" >> report.log
-wmic.exe cpu get name >> report.log 2>&1
-
-echo "ram" >> report.log
-wmic.exe computersystem get totalphysicalmemory >> report.log 2>&1
-
-echo "anakart" >> report.log
-wmic.exe baseboard get product,Manufacturer >> report.log 2>&1
-
-echo "disk" >> report.log
-wmic.exe diskdrive get serialnumber >> report.log 2>&1
-
-echo "mac adress" >> report.log
-getmac.exe >> report.log 2>&1
-
-echo " rapor oluştu"
-
-echo "Dosya şifreleniyor..."
-gpg --symmetric --batch --yes --cipher-algo AES256 --passphrase "$PAROLA" report.log
-
-rm report.log
-
-echo "tamamlandı"
-echo "dosyası oluştu ve orijinal dosya silindi."
