@@ -20,34 +20,37 @@ fi
 TIMESTAMP=$(date -Iseconds)
 
 
-    echo "saat: $TIMESTAMP"
+    echo "saat: $TIMESTAMP" > $DOSYA
     
-    echo "işlemci"
+    echo "işlemci" >> $DOSYA
     wmic.exe cpu get name >> $DOSYA
     
-    echo "ram"
+    echo "ram" >> $DOSYA
     wmic.exe computersystem get totalphysicalmemory >> $DOSYA
     
-    echo "anakart"
+    echo "anakart" >> $DOSYA
     wmic.exe baseboard get product,Manufacturer >> $DOSYA
     
-    echo "Anakart uuid"
+    echo "Anakart uuid" >> $DOSYA
     wmic.exe csproduct get uuid >> $DOSYA
     
-    echo "disk"
+    echo "disk" >> $DOSYA
     wmic.exe diskdrive get serialnumber >> $DOSYA
     
-    echo " mac adress"
+    echo "disk turu (SSD/HDD)" >> $DOSYA
+    powershell.exe -NoProfile -Command "Get-PhysicalDisk | Select-Object FriendlyName, MediaType" >> $DOSYA
+    
+    echo " mac adress" >> $DOSYA
     getmac.exe >> $DOSYA
 
 
 
 echo " rapor oluştu"
 
-echo "Dosya şifreleniyor "
+echo "Dosya şifreleniyor " 
 gpg --symmetric --batch --yes --cipher-algo AES256 --passphrase "$PAROLA" $DOSYA
 
 rm $DOSYA
 
-echo "tamamlandı "
-echo "dosyası oluştu ve orijinal silindi"
+echo "tamamlandı " 
+echo "dosyası oluştu ve orijinal silindi" 
