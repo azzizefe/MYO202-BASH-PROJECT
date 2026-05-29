@@ -31,6 +31,9 @@ TIMESTAMP=$(date -Iseconds)
     echo "anakart"
     wmic.exe baseboard get product,Manufacturer >> $DOSYA
     
+    echo "Anakart uuid"
+    wmic.exe csproduct get uuid >> $DOSYA
+    
     echo "disk"
     wmic.exe diskdrive get serialnumber >> $DOSYA
     
