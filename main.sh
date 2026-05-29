@@ -38,7 +38,7 @@ TIMESTAMP=$(date -Iseconds)
     wmic.exe diskdrive get serialnumber >> $DOSYA
     
     echo "disk turu (SSD/HDD)" >> $DOSYA
-    powershell.exe -NoProfile -Command "Get-PhysicalDisk | Select-Object FriendlyName, MediaType" >> $DOSYA
+    wmic.exe '/namespace:\\root\microsoft\windows\storage' path MSFT_PhysicalDisk get FriendlyName,MediaType >> $DOSYA
     
     echo " mac adress" >> $DOSYA
     getmac.exe >> $DOSYA
