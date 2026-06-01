@@ -24,19 +24,20 @@ TIMESTAMP=$(date -Iseconds)
     echo "saat: $TIMESTAMP" > $DOSYA
     
     echo "işlemci" >> $DOSYA
-    wmic.exe cpu get name >> $DOSYA
+    wmic.exe cpu get Manufacturer,Name >> $DOSYA
     
     echo "ram" >> $DOSYA
     wmic.exe computersystem get totalphysicalmemory >> $DOSYA
+    wmic.exe memorychip get Capacity,Manufacturer,PartNumber,SerialNumber,Speed >> $DOSYA
     
     echo "anakart" >> $DOSYA
-    wmic.exe baseboard get product,Manufacturer >> $DOSYA
+    wmic.exe baseboard get Manufacturer,Product,SerialNumber >> $DOSYA
     
     echo "Anakart uuid" >> $DOSYA
     wmic.exe csproduct get uuid >> $DOSYA
     
     echo "disk" >> $DOSYA
-    wmic.exe diskdrive get serialnumber >> $DOSYA
+    wmic.exe diskdrive get Manufacturer,Model,SerialNumber,Size >> $DOSYA
     
     echo "disk turu (SSD/HDD)" >> $DOSYA
     wmic.exe '/namespace:\\root\microsoft\windows\storage' path MSFT_PhysicalDisk get FriendlyName,MediaType >> $DOSYA
