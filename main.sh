@@ -1,5 +1,6 @@
 #!/bin/bash
-# Aziz Efe Çırak - 2420191044
+# Aziz Efe Çırak 
+# 2420191044
 # Sertifika Bağlantıları (3 Adet bağlantı)
 # https://www.btkakademi.gov.tr/portal/certificate/validate?certificateId=lK1hw4qwlo 
 # https://www.btkakademi.gov.tr/portal/certificate/validate?certificateId=XV1hWG2yKM
